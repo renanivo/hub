@@ -193,7 +193,6 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'mptt',
     'taggit',
-    'south',
 
     # project apps
     'core',
