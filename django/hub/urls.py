@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
@@ -26,22 +26,21 @@ class ProjectsRedirectView(RedirectView):
         return '/products/{}'.format(self.kwargs.get('pattern', ''))
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url('^$', HomeView.as_view(), name='home'),
     url(r'^login/$', TemplateView.as_view(template_name='login.html')),
     url(r'^mgr/', include(admin.site.urls)),
     url(r'^projects/(?P<pattern>.*?)$', ProjectsRedirectView.as_view()),
 
     # third party
-    (r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 
     # local apps
-    (r'^pr/', include('pr.urls', namespace='pr')),
-    (r'^people/', include('accounts.urls', namespace='accounts')),
-    (r'^teams/', include('teams.urls', namespace='teams')),
-    (r'^products/', include('projects.urls', namespace='projects')),
-    (r'^', include('core.urls', namespace='core')),
+    url(r'^pr/', include('pr.urls', namespace='pr')),
+    url(r'^people/', include('accounts.urls', namespace='accounts')),
+    url(r'^teams/', include('teams.urls', namespace='teams')),
+    url(r'^products/', include('projects.urls', namespace='projects')),
+    url(r'^', include('core.urls', namespace='core')),
 
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
     static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

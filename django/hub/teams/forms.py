@@ -7,9 +7,11 @@ class TeamCreateForm(forms.ModelForm):
 
     class Meta:
         model = Team
+        fields = '__all__'
 
 
 class TeamUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Team
+        fields = '__all__'

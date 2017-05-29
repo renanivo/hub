@@ -1,9 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from . import views
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url('^$', views.PressReleaseListView.as_view(), name='pressrelease_list'),
     url(
         '^(?P<pk>\d+)/$',
@@ -30,4 +29,4 @@ urlpatterns = patterns(
         views.PressReleaseCreateView.as_view(),
         name='pressrelease_add'
     ),
-)
+]

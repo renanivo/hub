@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from . import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', views.AccountListView.as_view(), name='account_list'),
     url(
         r'^organogram/$',
@@ -26,4 +25,4 @@ urlpatterns = patterns(
         views.AccountDetailView.as_view(),
         name='account_detail'
     )
-)
+]

@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from . import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', views.ProjectListView.as_view(), name='project_list'),
     url(r'^add/$', views.ProjectCreateView.as_view(), name='project_create'),
     url(r'^(?P<project_pk>\d+)/applications/add/$',
@@ -43,4 +42,4 @@ urlpatterns = patterns(
         views.ChangelogSendSlackView.as_view(),
         name='changelog_send_slack'
     ),
-)
+]
